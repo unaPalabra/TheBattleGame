@@ -1,0 +1,3 @@
+interface Fight {
+     int attack();
+}

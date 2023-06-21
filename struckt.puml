@@ -1,0 +1,54 @@
+@startuml
+class Main {
+~ {static} Personage gamer
+- {static} BufferedReader buff
+- {static} BattleField battleField
++ {static} void main(String[])
+~ {static} void menuGame(String)
+~ {static} void fighting()
+~ {static} Personage randomMonster()
+}
+interface Main$ResultBattle {
+~ void fightWin()
+~ void fightLost()
+}
+class Skeleton {
+}
+abstract class Personage {
+- String name
+- int health
+- int force
+- int knack
+- int experience
+- int gold
++ int attack()
++ void info()
++ String getName()
++ int getHealth()
++ int getForce()
++ int getKnack()
++ int getExperience()
++ int getGold()
++ void setHealth(int)
++ void setExperience(int)
++ void setGold(int)
+}
+class BattleField {
++ void fight(Personage,Personage,Main.ResultBattle)
+- Boolean hooking(Personage,Personage,Main.ResultBattle)
+}
+class Goblin {
+}
+interface Fight {
+~ int attack()
+}
+class Player {
+}
+
+
+Main +.. Main$ResultBattle
+Personage <|-- Skeleton
+Fight <|.. Personage
+Personage <|-- Goblin
+Personage <|-- Player
+@enduml

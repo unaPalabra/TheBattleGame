@@ -10,11 +10,10 @@ public class BattleField {
                 System.out.println("\t\t\tStep: " + step);
                 if (step++ % 2 != 0) {
                     isEnd = hooking(player, monster, resultBattle);
-                    isEnd = hooking(monster, player, resultBattle);
-                   anim('\u25c0', '\u25c1');
+                    anim('\u25b6', '\u25b7');
                 } else {
                     isEnd = hooking(monster, player, resultBattle);
-                   anim('\u25b6', '\u25b7');
+                    anim('\u25c0', '\u25c1');
                 }
             }
         };
@@ -23,21 +22,21 @@ public class BattleField {
         thread.start();
     }
 
-    public void anim(Character ch1,Character ch2 ){
+    public void anim(Character ch1, Character ch2) {
         try {
             System.out.print("\t\t\t");
-            for (int i =0; i<2; i++ ){
+            for (int i = 0; i < 2; i++) {
                 Thread.sleep(300);
-                System.out.print(ch1+" ");
+                System.out.print(ch1 + " ");
                 Thread.sleep(300);
-                System.out.print(ch2 +" ");
-
+                System.out.print(ch2 + " ");
             }
             System.out.println();
-        }catch (InterruptedException ex) {
+        } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
     }
+
     private Boolean hooking(Personage defender, Personage attacker, Main.ResultBattle resultBattle) {
         int hit = attacker.attack();
         int defHealth = defender.getHealth() - hit;
@@ -58,7 +57,6 @@ public class BattleField {
             attacker.setExperience(attacker.getExperience() + defender.getExperience());
             attacker.setGold(attacker.getGold() + defender.getGold());
             resultBattle.fightWin();
-
             return true;
         } else {
             defender.setHealth(defHealth);
